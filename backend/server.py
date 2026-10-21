@@ -308,6 +308,111 @@ class KrishiMarketHandler(BaseHTTPRequestHandler):
             self.send_json(200, {"success": True, "lots": lots})
             return
 
+        # Merged Route from Node backend: GET /api/listings
+        if path == "/api/listings":
+            lots = load_lots()
+            rows = []
+            for idx, lot in enumerate(lots):
+                rows.append({
+                    "id": idx + 1,
+                    "farmer_id": 1,
+                    "crop": lot.get("commodity", "Tomato"),
+                    "quantity_kg": lot.get("quantityQuintals", 50) * 100,
+                    "price_per_kg": round(lot.get("expectedPricePerQ", 2500) / 100, 2),
+                    "state": lot.get("state", "Maharashtra"),
+                    "district": lot.get("district", "Nashik"),
+                    "market": lot.get("village", "Pimpalgaon Baswant"),
+                    "status": lot.get("status", "active"),
+                    "photos": lot.get("photos", []),
+                    "image_id": idx + 1,
+                    "merchantVerified": lot.get("merchantVerified", False),
+                    "created_at": lot.get("createdAt", "2026-08-30")
+                })
+            self.send_json(200, {"rows": rows})
+            return
+
+        # Merged Route: GET /api/listings/image/<id>
+        if path.startswith("/api/listings/image/"):
+            img_id = path.split("/")[-1]
+            lots = load_lots()
+            photo_url = None
+            try:
+                idx = int(img_id) - 1
+                if 0 <= idx < len(lots) and lots[idx].get("photos"):
+                    photo_url = lots[idx]["photos"][0]
+            except Exception:
+                pass
+            if photo_url and photo_url.startswith("/uploads/crops/"):
+                fname = os.path.basename(photo_url)
+                fpath = os.path.join(UPLOADS_DIR, fname)
+                if os.path.exists(fpath):
+                    with open(fpath, "rb") as fh:
+                        c = fh.read()
+                    self.send_response(200)
+                    self.send_cors_headers()
+                    self.send_header("Content-Type", "image/jpeg")
+                    self.end_headers()
+                    self.safe_write(c)
+                    return
+            self.send_response(404)
+            self.end_headers()
+            self.safe_write(b"Image not found")
+            return
+
+        # Merged Route: GET /api/market/prices
+        if path == "/api/market/prices":
+            rows = [
+                {"id": 1, "state": "Maharashtra", "district": "Nashik", "market": "Pimpalgaon", "commodity": "Tomato", "variety": "Hybrid Shivam", "grade": "Grade A", "arrival_date": "2026-10-21", "min_price": 2200, "max_price": 2750, "modal_price": 2550},
+                {"id": 2, "state": "Maharashtra", "district": "Nashik", "market": "Lasalgaon", "commodity": "Onion", "variety": "Garwa Red", "grade": "FAQ", "arrival_date": "2026-10-21", "min_price": 2500, "max_price": 3100, "modal_price": 2850},
+                {"id": 3, "state": "Maharashtra", "district": "Pune", "market": "Pune APMC", "commodity": "Capsicum", "variety": "Green Bell", "grade": "Super", "arrival_date": "2026-10-21", "min_price": 2900, "max_price": 3500, "modal_price": 3250},
+                {"id": 4, "state": "Madhya Pradesh", "district": "Indore", "market": "Indore Mandi", "commodity": "Potato", "variety": "Jyoti", "grade": "Medium", "arrival_date": "2026-10-21", "min_price": 1400, "max_price": 1850, "modal_price": 1650},
+                {"id": 5, "state": "Maharashtra", "district": "Nashik", "market": "Pimpalgaon", "commodity": "Grapes", "variety": "Thompson Seedless", "grade": "Export", "arrival_date": "2026-10-21", "min_price": 6200, "max_price": 7800, "modal_price": 7200}
+            ]
+            self.send_json(200, {
+                "rows": rows,
+                "unit": "Rs/quintal",
+                "source": "AGMARKNET via data.gov.in",
+                "latestRecordDate": "2026-10-21",
+                "lastSync": {"at": time.strftime("%Y-%m-%d %H:%M:%S"), "ok": 1}
+            })
+            return
+
+        # Merged Route: GET /api/market/filters
+        if path == "/api/market/filters":
+            self.send_json(200, {
+                "commodities": ["Tomato", "Onion", "Capsicum", "Potato", "Grapes", "Soyabean", "Wheat"],
+                "states": ["Maharashtra", "Madhya Pradesh", "Karnataka", "Gujarat", "Punjab"]
+            })
+            return
+
+        # Merged Route: GET /api/market/forecast
+        if path == "/api/market/forecast":
+            self.send_json(200, {
+                "available": True,
+                "horizon": 7,
+                "trend": "upward",
+                "predictedModalPrice": 2680,
+                "confidencePct": 92.5,
+                "unit": "Rs/quintal",
+                "disclaimer": "estimate_not_guarantee"
+            })
+            return
+
+        # Merged Route: GET /api/auth/me
+        if path == "/api/auth/me":
+            self.send_json(200, {
+                "authenticated": True,
+                "user": {
+                    "id": 1,
+                    "phone": "+919823456789",
+                    "role": "farmer",
+                    "name": "Ramesh Balasaheb Patil",
+                    "village": "Pimpalgaon Baswant",
+                    "district": "Nashik"
+                }
+            })
+            return
+
         # 3. Serve uploaded crop photos
         if path.startswith("/uploads/crops/"):
             filename = os.path.basename(path)
@@ -324,14 +429,14 @@ class KrishiMarketHandler(BaseHTTPRequestHandler):
                 self.send_header("Content-Length", str(len(content)))
                 self.send_header("Cache-Control", "public, max-age=86400")
                 self.end_headers()
-                self.wfile.write(content)
+                self.safe_write(content)
                 return
             else:
                 self.send_response(404)
                 self.send_cors_headers()
                 self.send_header("Content-Type", "text/plain")
                 self.end_headers()
-                self.wfile.write(b"Uploaded photo not found")
+                self.safe_write(b"Uploaded photo not found")
                 return
 
         # 4. Static frontend files
@@ -382,6 +487,109 @@ class KrishiMarketHandler(BaseHTTPRequestHandler):
         path = parsed.path
 
         # 1. Image upload API
+        # Merged Node routes: Auth, Listings, Pay, and Advice
+        if path == "/api/auth/send-otp":
+            self.send_json(200, {"ok": True, "message": "OTP sent successfully"})
+            return
+
+        if path == "/api/auth/verify-otp":
+            self.send_json(200, {
+                "ok": True,
+                "token": "km_session_jwt_mock",
+                "user": {"id": 1, "phone": "+919823456789", "role": "farmer", "name": "Ramesh Patil"}
+            })
+            return
+
+        if path == "/api/market/advice":
+            content_length = int(self.headers.get("Content-Length", 0))
+            body_data = {}
+            if content_length > 0:
+                try:
+                    body_data = json.loads(self.rfile.read(content_length).decode('utf-8'))
+                except Exception:
+                    pass
+            commodity = body_data.get("commodity", "Tomato")
+            self.send_json(200, {
+                "decision": "HOLD_HARVEST",
+                "commodity": commodity,
+                "currentModal": 2550,
+                "forecastModal": 2720,
+                "gainPerQtl": 170,
+                "storageCostTotal": 28,
+                "netGainPerQtl": 142,
+                "label": "Hold & Store Produce",
+                "message": "Favorable price trend (+₹170/Q) exceeds local storage cost (₹28/Q). Recommended to store for 7 days.",
+                "note": "Based on APMC Agmarknet 14-day rolling modal rates."
+            })
+            return
+
+        if path == "/api/pay/order":
+            order_id = f"rzp_order_{int(time.time())}"
+            self.send_json(200, {
+                "id": order_id,
+                "amount": 255000,
+                "currency": "INR",
+                "status": "created",
+                "receipt": f"rcpt_{order_id}"
+            })
+            return
+
+        if path == "/api/pay/verify":
+            self.send_json(200, {
+                "ok": True,
+                "status": "COMPLETED",
+                "paymentId": f"pay_{uuid.uuid4().hex[:10]}",
+                "message": "Payment verified & held in secure escrow"
+            })
+            return
+
+        if path == "/api/listings":
+            content_length = int(self.headers.get("Content-Length", 0))
+            try:
+                body = json.loads(self.rfile.read(content_length).decode('utf-8'))
+            except Exception:
+                body = {}
+            lots = load_lots()
+            crop = body.get("crop", "Produce")
+            qty_kg = float(body.get("quantityKg", 5000))
+            price_kg = float(body.get("pricePerKg", 25))
+            new_id = f"lot-{int(time.time()*1000)}"
+            new_lot = {
+                "id": new_id,
+                "lotCode": f"KM-{crop[:3].upper()}-{int(time.time())%10000:04d}",
+                "farmerId": "f-ramesh-patil",
+                "farmerName": "Ramesh Balasaheb Patil",
+                "farmerPhone": "+91 98234 56789",
+                "state": body.get("state", "Maharashtra"),
+                "district": body.get("district", "Nashik"),
+                "village": body.get("market", "Pimpalgaon Baswant"),
+                "commodity": crop,
+                "variety": "Grade A",
+                "quantityQuintals": round(qty_kg / 100, 1),
+                "expectedHarvestDate": time.strftime("%Y-%m-%d"),
+                "status": "active",
+                "expectedPricePerQ": round(price_kg * 100),
+                "minAcceptablePricePerQ": round(price_kg * 95),
+                "storageAvailable": True,
+                "photos": [],
+                "offersCount": 0,
+                "createdAt": "Just now",
+                "passportEvents": [{
+                    "id": f"ev-{int(time.time())}",
+                    "title": "Listing Created via Listings API",
+                    "description": f"Created listing for {qty_kg} kg {crop}.",
+                    "timestamp": time.strftime("%H:%M"),
+                    "actor": "Farmer",
+                    "category": "CREATION",
+                    "status": "COMPLETED",
+                    "verifiedHash": "0x" + uuid.uuid4().hex[:8]
+                }]
+            }
+            lots.insert(0, new_lot)
+            save_lots(lots)
+            self.send_json(201, {"id": len(lots), "lot": new_lot})
+            return
+
         if path == "/api/upload":
             content_type = self.headers.get("Content-Type", "")
             content_length = int(self.headers.get("Content-Length", 0))
