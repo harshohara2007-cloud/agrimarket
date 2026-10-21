@@ -1,0 +1,293 @@
+[
+  {
+    "id": "lot-1792595561624",
+    "lotCode": "KM-TOM-4699",
+    "farmerId": "f-ramesh-patil",
+    "farmerName": "Ramesh Balasaheb Patil",
+    "farmerPhone": "9823456789",
+    "state": "Maharashtra",
+    "district": "Nashik",
+    "village": "Pimpalgaon Baswant",
+    "farmAddress": "Survey 42, Pimpalgaon-Vani Road, Nashik, Maharashtra",
+    "farmCoordinates": {
+      "lat": 20.1746,
+      "lng": 73.9872
+    },
+    "commodity": "Tomato",
+    "variety": "Hybrid Shivam (A-Grade)",
+    "quantityQuintals": 65,
+    "expectedHarvestDate": "2026-10-23",
+    "status": "active",
+    "expectedPricePerQ": 2650,
+    "minAcceptablePricePerQ": 2500,
+    "storageAvailable": true,
+    "storageCostPerDayPerQ": 4,
+    "verifiedGrade": "Grade-A Export Quality",
+    "aiPreliminaryGrade": "Grade-A (Visual Computer Vision Verified)",
+    "aiAssessment": {
+      "colorUniformityPct": 94,
+      "maturityIndexPct": 91,
+      "surfaceBlemishPct": 3,
+      "recommendedGrade": "Grade-A (Modal APMC Rate +₹180/Q)"
+    },
+    "photos": [
+      "/uploads/crops/crop_1792595561_65e8e4de.png"
+    ],
+    "offersCount": 0,
+    "createdAt": "Just now",
+    "merchantVerified": false,
+    "passportEvents": [
+      {
+        "id": "ev-1792595561624-1",
+        "title": "Real Camera Crop Photo Captured & Verified",
+        "description": "Farmer verified high-res photo of 65 Quintals Tomato (Hybrid Shivam (A-Grade)). Photo inspected & uploaded directly from farm gate.",
+        "timestamp": "08:42 pm",
+        "actor": "Farmer Direct Camera Studio",
+        "category": "CREATION",
+        "status": "COMPLETED",
+        "verifiedHash": "0xbc071fe9"
+      }
+    ]
+  },
+  {
+    "commodity": "Green Capsicum",
+    "category": "Vegetables",
+    "variety": "Indra Polyhouse",
+    "quantityQuintals": 60,
+    "quantityUnit": "Quintals",
+    "expectedPricePerQ": 4350,
+    "priceUnit": "₹/Quintal",
+    "verifiedGrade": "Grade A+",
+    "expectedHarvestDate": "2026-09-02",
+    "district": "Pune",
+    "village": "Baramati",
+    "farmAddress": "Gat No 55, Baramati Shivar, Pune",
+    "farmerPhone": "+91 98220 11223",
+    "farmerName": "Dnyaneshwar Shinde",
+    "description": "Crisp green polyhouse bell peppers. Thick wall, grade A+ shine.",
+    "photos": [
+      "/uploads/crops/crop_1792582415_76a0c3db.jpg"
+    ],
+    "id": "lot-1792582415-b2a5",
+    "lotCode": "AGRI-2026-NASH-b2a5",
+    "createdAt": "2026-10-21 17:03",
+    "farmerId": "f-current-user",
+    "updatedAt": "2026-10-21 17:03:35"
+  },
+  {
+    "commodity": "Green Capsicum",
+    "category": "Vegetables",
+    "variety": "Indra Polyhouse",
+    "quantityQuintals": 60,
+    "quantityUnit": "Quintals",
+    "expectedPricePerQ": 4350,
+    "priceUnit": "₹/Quintal",
+    "verifiedGrade": "Grade A+",
+    "expectedHarvestDate": "2026-09-02",
+    "district": "Pune",
+    "village": "Baramati",
+    "farmAddress": "Gat No 55, Baramati Shivar, Pune",
+    "farmerPhone": "+91 98220 11223",
+    "farmerName": "Dnyaneshwar Shinde",
+    "description": "Crisp green polyhouse bell peppers. Thick wall, grade A+ shine.",
+    "photos": [
+      "/uploads/crops/crop_1792497942_4c32593a.jpg"
+    ],
+    "id": "lot-1792497942-73fc",
+    "lotCode": "AGRI-2026-NASH-73fc",
+    "createdAt": "2026-10-20 17:35",
+    "farmerId": "f-current-user",
+    "updatedAt": "2026-10-20 17:35:42"
+  },
+  {
+    "id": "lot-01",
+    "lotCode": "AGRI-2026-NASH-0421",
+    "farmerId": "f-ramesh-patil",
+    "farmerName": "Ramesh Balasaheb Patil",
+    "farmerPhone": "+91 98234 56789",
+    "state": "Maharashtra",
+    "district": "Nashik",
+    "village": "Pimpalgaon Baswant",
+    "farmAddress": "Survey No. 42, Pimpalgaon-Vani Road, Nashik, Maharashtra",
+    "commodity": "Tomato",
+    "category": "Vegetables",
+    "variety": "Hybrid Shivam (Grade A)",
+    "quantityQuintals": 85,
+    "quantityUnit": "Quintals",
+    "expectedHarvestDate": "2026-08-30",
+    "status": "active",
+    "expectedPricePerQ": 2500,
+    "priceUnit": "₹/Quintal",
+    "minAcceptablePricePerQ": 2350,
+    "storageAvailable": true,
+    "storageCostPerDayPerQ": 4,
+    "verifiedGrade": "Grade A",
+    "aiPreliminaryGrade": "Grade A",
+    "description": "Premium vine-ripened Shivam hybrid tomatoes. Uniform red color, firm texture, ideal for supermarket retail and processing.",
+    "aiAssessment": {
+      "id": "ai-01",
+      "cropIdentified": "Tomato (Lycopersicon esculentum)",
+      "confidenceScore": 96.4,
+      "colorUniformityPct": 92.5,
+      "maturityIndexPct": 88,
+      "visibleDefectsPct": 2.1,
+      "recommendedGrade": "Grade A",
+      "disclaimer": "AI Preliminary Assessment — Physical inspection available upon request.",
+      "assessmentNotes": [
+        "Optimal red-orange coloration indicating 85-90% commercial maturity.",
+        "High firmness profile with minimum skin cracking (<2.5%).",
+        "Average diameter estimated at 55-65mm (Standard retail grade)."
+      ],
+      "assessedAt": "2026-08-28 09:15 AM"
+    },
+    "photos": [
+      "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1546470427-e26264be0b11?w=800&auto=format&fit=crop&q=80"
+    ],
+    "passportEvents": [
+      {
+        "id": "ev-1",
+        "title": "Crop Lot Registered",
+        "description": "Farmer Ramesh Patil registered 85 Quintals of Shivam Hybrid Tomato with photo proofs.",
+        "timestamp": "2026-08-28 08:30 AM",
+        "actor": "Farmer",
+        "category": "CREATION",
+        "status": "COMPLETED",
+        "verifiedHash": "0x8f2d4a19"
+      },
+      {
+        "id": "ev-2",
+        "title": "AI Preliminary Scan",
+        "description": "Vision analysis verified Grade A profile (92.5% color uniformity, 88% maturity).",
+        "timestamp": "2026-08-28 09:15 AM",
+        "actor": "AI Vision Engine",
+        "category": "AI_SCAN",
+        "status": "COMPLETED",
+        "verifiedHash": "0x3c91b772"
+      }
+    ],
+    "offersCount": 2,
+    "bestOfferPerQ": 2580,
+    "createdAt": "2026-08-28 08:30 AM"
+  },
+  {
+    "id": "lot-02",
+    "lotCode": "AGRI-2026-NASH-0912",
+    "farmerId": "f-suresh-shinde",
+    "farmerName": "Suresh Tukaram Shinde",
+    "farmerPhone": "+91 94220 88123",
+    "state": "Maharashtra",
+    "district": "Nashik",
+    "village": "Dindori",
+    "farmAddress": "Gat No. 118, Mohadi Shivar, Dindori, Nashik",
+    "commodity": "Grapes (Thompson / Sonaka)",
+    "category": "Fruits",
+    "variety": "Thompson Seedless Export Grade",
+    "quantityQuintals": 120,
+    "quantityUnit": "Quintals",
+    "expectedHarvestDate": "2026-09-05",
+    "status": "active",
+    "expectedPricePerQ": 8400,
+    "priceUnit": "₹/Quintal",
+    "minAcceptablePricePerQ": 8100,
+    "storageAvailable": true,
+    "storageCostPerDayPerQ": 8,
+    "verifiedGrade": "Grade A+",
+    "aiPreliminaryGrade": "Grade A+",
+    "description": "Vineyard export-grade Thompson seedless table grapes. High brix sugar content (>18°), crisp berry firmness.",
+    "aiAssessment": {
+      "id": "ai-02",
+      "cropIdentified": "Grapes (Vitis vinifera)",
+      "confidenceScore": 98.1,
+      "colorUniformityPct": 95.0,
+      "maturityIndexPct": 92,
+      "visibleDefectsPct": 1.2,
+      "recommendedGrade": "Grade A+",
+      "disclaimer": "AI Preliminary Assessment — Physical brix refractometer reading verified.",
+      "assessmentNotes": [
+        "Translucent golden-green berry cluster formation.",
+        "Uniform berry size (16-18mm diameter) meeting EU export standards.",
+        "Zero pesticide spray residue in pre-harvest interval testing."
+      ],
+      "assessedAt": "2026-08-28 10:20 AM"
+    },
+    "photos": [
+      "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=800&auto=format&fit=crop&q=80"
+    ],
+    "passportEvents": [
+      {
+        "id": "ev-10",
+        "title": "Vineyard Lot Registered",
+        "description": "Farmer Suresh Shinde listed 120 Quintals of Thompson Seedless grapes.",
+        "timestamp": "2026-08-28 10:20 AM",
+        "actor": "Farmer",
+        "category": "CREATION",
+        "status": "COMPLETED",
+        "verifiedHash": "0x5a19ef43"
+      }
+    ],
+    "offersCount": 1,
+    "bestOfferPerQ": 8550,
+    "createdAt": "2026-08-28 10:20 AM"
+  },
+  {
+    "id": "lot-03",
+    "lotCode": "AGRI-2026-NASH-0315",
+    "farmerId": "f-ramesh-patil",
+    "farmerName": "Ramesh Balasaheb Patil",
+    "farmerPhone": "+91 98234 56789",
+    "state": "Maharashtra",
+    "district": "Nashik",
+    "village": "Lasalgaon",
+    "farmAddress": "Near APMC Yard, Lasalgaon Road, Nashik",
+    "commodity": "Onion",
+    "category": "Vegetables",
+    "variety": "Nashik Garwa Red Onion (Cured Stock)",
+    "quantityQuintals": 140,
+    "quantityUnit": "Quintals",
+    "expectedHarvestDate": "2026-08-25",
+    "status": "active",
+    "expectedPricePerQ": 2750,
+    "priceUnit": "₹/Quintal",
+    "minAcceptablePricePerQ": 2600,
+    "storageAvailable": true,
+    "storageCostPerDayPerQ": 3,
+    "verifiedGrade": "Grade A",
+    "aiPreliminaryGrade": "Grade A",
+    "description": "Naturally cured Nashik Garwa red onion with tight outer skins, low moisture, excellent 4-month storage shelf life.",
+    "aiAssessment": {
+      "id": "ai-03",
+      "cropIdentified": "Red Onion (Allium cepa)",
+      "confidenceScore": 95.8,
+      "colorUniformityPct": 91.2,
+      "maturityIndexPct": 94,
+      "visibleDefectsPct": 2.4,
+      "recommendedGrade": "Grade A",
+      "disclaimer": "AI Preliminary Assessment — Storage ready.",
+      "assessmentNotes": [
+        "Double neck closure with tight paper skin retention.",
+        "Average bulb diameter 50-60mm.",
+        "Moisture index ideal for long-distance transport."
+      ],
+      "assessedAt": "2026-08-28 11:00 AM"
+    },
+    "photos": [
+      "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=800&auto=format&fit=crop&q=80"
+    ],
+    "passportEvents": [
+      {
+        "id": "ev-20",
+        "title": "Onion Lot Registered",
+        "description": "Farmer Ramesh Patil registered 140 Quintals of Garwa Red Onion.",
+        "timestamp": "2026-08-28 11:00 AM",
+        "actor": "Farmer",
+        "category": "CREATION",
+        "status": "COMPLETED",
+        "verifiedHash": "0x7b8849cd"
+      }
+    ],
+    "offersCount": 3,
+    "bestOfferPerQ": 2820,
+    "createdAt": "2026-08-28 11:00 AM"
+  }
+]
