@@ -1,0 +1,4 @@
+{"name":"krishimarket-backend","version":"1.0.0","type":"module",
+"scripts":{"start":"node server.js","test":"node --test --test-force-exit test/core.test.js"},
+"engines":{"node":">=20"},
+"dependencies":{"better-sqlite3":"^11.3.0","cookie-parser":"^1.4.6","express":"^4.19.2","express-rate-limit":"^7.4.0","jsonwebtoken":"^9.0.2","multer":"^1.4.5-lts.1","razorpay":"^2.9.4","dotenv":"^16.4.5"}}
