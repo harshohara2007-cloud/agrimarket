@@ -1,0 +1,18 @@
+{
+  "name": "krishimarket",
+  "version": "2.1.0",
+  "description": "KrishiMarket - Smart Farmer Camera & Produce Photo Upload Platform",
+  "scripts": {
+    "build": "echo 'Static build ready in public/'",
+    "start": "python backend/server.py 8000"
+  },
+  "keywords": [
+    "krishimarket",
+    "agriculture",
+    "apmc",
+    "farmer",
+    "camera-upload"
+  ],
+  "author": "KrishiMarket Team",
+  "license": "MIT"
+}
